@@ -1,0 +1,478 @@
+
+        /* 全局重置与基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft Yahei', sans-serif;
+        }
+
+        :root {
+            /* 配色方案 - 科技蓝为主，适配主机销售场景 */
+            --primary: #165DFF;
+            --primary-light: #4080FF;
+            --primary-dark: #0E42D2;
+            --secondary: #0FC6C2;
+            --accent: #FF7D00;
+            --text-main: #333;
+            --text-secondary: #666;
+            --text-light: #fff;
+            --bg-main: #F5F7FA;
+            --bg-card: #fff;
+            --border-light: #E5E6EB;
+            --border-hover: #165DFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
+            /* 新增导航栏专属变量 */
+            --nav-height: 88px;
+            --nav-shadow: 0 2px 18px rgba(22, 93, 255, 0.08);
+            --nav-hover-bg: rgba(22, 93, 255, 0.03);
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            left: 0;
+            right: 0;
+        }
+
+        /* 头部导航样式 - 核心优化 */
+        .header {
+            background-color: var(--bg-card);
+            box-shadow: var(--nav-shadow); /* 更细腻的阴影 */
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            width: 100%;
+            /* 新增：导航栏顶部加1px渐变边框，提升精致感 */
+            border-top: 3px solid var(--primary);
+            /* 新增：轻微的背景渐变 */
+            background: linear-gradient(to bottom, #ffffff, #fafbff);
+        }
+
+        .menu_nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--nav-height); /* 统一高度变量 */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px; /* 更宽松的内边距 */
+        }
+
+        .logo10isp img {
+            height: 48px; /* 放大logo，更醒目 */
+            width: auto;
+            /* 新增：logo hover效果 */
+            transition: transform 0.3s ease;
+        }
+
+        .logo10isp img:hover {
+            transform: scale(1.03);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 36px; /* 增大间距，更舒展 */
+            align-items: center; /* 垂直居中 */
+        }
+
+        .nav-item {
+            position: relative;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            /* 新增：导航项内边距，扩大点击区域 */
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        /* 新增：导航项hover背景 */
+        .nav-item:hover {
+            background-color: var(--nav-hover-bg);
+        }
+
+        .nav-item a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            /* 新增：文字间距，更易读 */
+            letter-spacing: 0.5px;
+        }
+
+        .nav-item a:hover {
+            color: var(--primary);
+        }
+
+        /* 优化：当前选中/推荐项样式 */
+        .chaojifwq {
+            color: var(--primary);
+            font-weight: 600; /* 加粗 */
+            position: relative;
+            /* 继承hover背景 */
+            background-color: var(--nav-hover-bg);
+        }
+
+        /* 新增：选中项底部指示线 */
+        .chaojifwq::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+        }
+
+        .tuijians {
+            position: absolute;
+            top: -10px; /* 调整位置，更协调 */
+            right: -28px;
+            background-color: var(--accent);
+            color: var(--text-light);
+            font-size: 11px; /* 缩小标签，更精致 */
+            padding: 3px 8px;
+            border-radius: 12px; /* 圆角标签 */
+            font-weight: 600;
+            /* 新增：标签阴影 */
+            box-shadow: 0 2px 6px rgba(255, 125, 0, 0.2);
+        }
+
+        /* 优化：登录按钮样式，突出CTA */
+        .nav-item:last-child {
+            background-color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(22, 93, 255, 0.15);
+        }
+
+        .nav-item:last-child a {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .nav-item:last-child:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(22, 93, 255, 0.2);
+        }
+
+        /* 横幅区域样式（不变） */
+        .banner {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: var(--text-light);
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 1200px;
+            width: calc(100% - 40px);
+        }
+
+        .paoti3 a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .paoti2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 15px 0;
+            letter-spacing: 1px;
+        }
+
+        .paoti4 {
+            font-size: 18px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        /* 产品板块通用样式（不变） */
+        .product-section {
+            margin: 60px auto;
+            max-width: 1200px;
+            width: calc(100% - 40px);
+        }
+
+        .yun_list_name {
+            font-size: 28px;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .yun_list_name::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        .yun_jiqi {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .yun_list {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .yun_list:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-hover);
+        }
+
+        .yun_cpbt {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            display: block;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .yun_nr ul {
+            list-style: none;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .yun_nr li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-light);
+            font-size: 14px;
+        }
+
+        .yun_nr li span:first-child {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .yun_nr li font {
+            color: var(--text-main);
+        }
+
+        .jiage_bg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+            padding: 12px;
+            background-color: var(--primary-light);
+            color: var(--text-light);
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            width: 100%;
+            flex-wrap: wrap;
+        }
+
+        .jiage_bg .price-text {
+            white-space: nowrap;
+        }
+
+        .jiage_bg a {
+            color: var(--text-light);
+            text-decoration: none;
+            background-color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            min-width: 80px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .jiage_bg a:hover {
+            background-color: #e67000;
+        }
+
+        /* 产品优势板块样式（不变） */
+        .advantage-section {
+            background-color: var(--bg-card);
+            padding: 60px 0;
+            margin: 60px auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            max-width: 1200px;
+            width: calc(100% - 40px);
+        }
+
+        .advantage-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .advantage-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .advantage-item:hover {
+            background-color: var(--bg-main);
+        }
+
+        .advantage-item img {
+            width: 48px;
+            height: 48px;
+            flex-shrink: 0;
+        }
+
+        .advantage-item h3 {
+            color: var(--primary-dark);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .advantage-item p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* 页脚样式（不变） */
+        .footer {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .footer2 {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer2 a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .footer2 a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式适配（补充导航栏适配） */
+        @media (max-width: 768px) {
+            .yun_jiqi {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+            
+            .menu_nav {
+                flex-direction: column;
+                height: auto;
+                padding: 20px 0;
+            }
+
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 15px;
+            }
+
+            /* 响应式下取消导航栏特殊样式 */
+            .chaojifwq::after {
+                display: none;
+            }
+
+            .nav-item:last-child {
+                margin-top: 8px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .banner {
+                padding: 40px 0;
+                width: calc(100% - 40px);
+            }
+
+            .paoti2 {
+                font-size: 28px;
+            }
+
+            .yun_list_name {
+                font-size: 24px;
+            }
+
+            .advantage-list {
+                gap: 20px;
+            }
+
+            .jiage_bg {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .jiage_bg a {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .yun_jiqi {
+                grid-template-columns: 1fr;
+            }
+
+            .paoti4 {
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+
+            .jiage_bg {
+                font-size: 16px;
+            }
+        }
+   
